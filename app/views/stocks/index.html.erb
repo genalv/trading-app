@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>Symbol</th>
+        <th>Company name</th>
+        <th>Shares</th>
+        <th>Cost price</th>
+    </tr>
+    <% @stock.each do |stock| %>
+        <tr>
+            <td><%= stock.symbol %></td>
+            <td><%= stock.company_name %></td>
+            <td><%= stock.shares %></td>
+            <td><%= stock.cost_price %></td>
+        </tr>
+    <% end %>
+</table>
+<%= @test %>
+<%= @new%>
+<%= @new2 %>
