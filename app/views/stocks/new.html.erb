@@ -1,21 +1,27 @@
-<div class="form-container">
-        <h1> Quote </h1>
-        <%= form_with model: @stock do |form| %>
-        <div class="field">
-            <label class="label"><%= form.label "Enter the stock symbol" %></label>
-            <div class="control">
-                <%= form.text_field :stock_symbol, class: "input is-s", placeholder: "ex. AMZN, GOOGL, AAPL, MSFT" %>
-            </div>
-        </div>
-        <div class="field is-grouped">
-            <div class="control">
-                <p>
-                    <%= form.submit "Search Quote", class: "button is-link" %>
-                </p>
-                <p>
-                    <%= link_to "Back", stocks_path, class: "button is-link" %>
-                </p>
-            </div>
-        </div>
-    </div>
+<%= @company_name %> <%= @stock_symbol %>
+
+<%= form_with model: @stock do |form| %>
+  <table>
+    <tr>
+        <td><%= form.label :company_name %></td>
+        <td><%= form.text_field :stock_name, value: @company_name, :readonly => true %>
+    </tr>
+    <tr>
+        <td><%= form.label :symbol %></td>
+        <td><%= form.text_field :stock_symbol, value: @stock_symbol, :readonly => true %></td>
+    </tr>
+        <tr>
+        <td><%= form.label :price %></td>
+        <td><%= form.text_field :stock_price, value: @price, :readonly => true %></td>
+    </tr>
+  </table>
+
+  <div class="field">
+      <%= form.label :shares, 'Enter number of shares' %>
+      <%= form.number_field :shares %>
+      <div class="actions">
+        <%= form.submit 'Buy' %>
+      </div>
+  </div>
+
 <% end %>
