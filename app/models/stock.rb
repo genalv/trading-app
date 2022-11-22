@@ -1,5 +1,6 @@
 class Stock < ApplicationRecord
     belongs_to :user
+    validates :shares, :numericality => { :greater_than  => 0 }
     
     def self.search(stock_symbol)
 
