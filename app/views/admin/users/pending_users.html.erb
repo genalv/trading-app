@@ -1,0 +1,14 @@
+<table class = "table is-bordered">
+    <tr>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Account Status</th>
+    </tr>
+    <% @user.each do |user| %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= user.admin %></td>
+            <td><%= user.account_status %></td>
+         </tr>
+    <% end %>
+</table>

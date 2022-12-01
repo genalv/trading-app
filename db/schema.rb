@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_19_055200) do
+ActiveRecord::Schema.define(version: 2022_11_25_034611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_055200) do
     t.string "stock_name"
     t.string "stock_symbol"
     t.float "stock_price"
-    t.integer "shares"
+    t.integer "shares", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
@@ -27,13 +27,16 @@ ActiveRecord::Schema.define(version: 2022_11_19_055200) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "type"
     t.string "company_name"
-    t.integer "shares"
+    t.integer "shares", default: 0
     t.float "share_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.string "action_type"
+    t.string "stock_symbol"
+    t.float "stock_price"
+    t.float "value"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -45,6 +48,12 @@ ActiveRecord::Schema.define(version: 2022_11_19_055200) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.boolean "admin", default: false
+    t.string "account_status", default: "Pending"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

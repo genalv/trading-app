@@ -1,0 +1,27 @@
+<%= form_with model: @stock do |form| %>
+  <table class = "table is-bordered">
+    <tr>
+        <td><%= form.label :company_name %></td>
+        <td><%= form.text_field :stock_name, value: @company_name, :readonly => true %>
+    </tr>
+    <tr>
+        <td><%= form.label :symbol %></td>
+        <td><%= form.text_field :stock_symbol, value: @stock_symbol, :readonly => true %></td>
+    </tr>
+        <tr>
+        <td><%= form.label :price %></td>
+        <td><%= form.text_field :stock_price, value: @price, :readonly => true %></td>
+    </tr>
+
+
+    <tr>
+        <td><%= form.label :shares, 'Enter number of shares' %></td>
+        <td><%= form.number_field :shares, value: "0" %></td>
+    </tr>
+    <tr>
+        <td><%= form.submit 'Sell' %></td>
+        <td></td>
+    </tr>
+</table>
+
+<% end %>

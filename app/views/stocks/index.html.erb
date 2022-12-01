@@ -1,23 +1,22 @@
-<table>
-    <tr>
-        <th>Symbol</th>
-        <th>Company name</th>
-        <th>Shares</th>
-        <th>Cost price</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <% @stock.each do |stock| %>
+<div class ="index-container">
+    <table class ="table is-bordered">
         <tr>
-            <td><%= stock.stock_symbol %></td>
-            <td><%= stock.stock_name %></td>
-            <td><%= stock.shares %></td>
-            <td><%= stock.stock_price %></td>
-            <td>Buy</td>
-            <td>Sell</td>
+            <th>Symbol</th>
+            <th>Company name</th>
+            <th>Shares</th>
+            <th>Cost price</th>
+            <th></th>
+            <th></th>
         </tr>
-    <% end %>
-</table>
-<%= @test %>
-<%= @new %>
-<%= @new2 %>
+        <% @stock.each do |stock| %>
+            <tr>
+                <td><%= stock.stock_symbol %></td>
+                <td><%= stock.stock_name %></td>
+                <td><%= stock.shares %></td>
+                <td><%= stock.stock_price %></td>
+                <td><%= link_to "Buy", buy_stock_path(stock.stock_symbol), class: "button is-link is-small" %></td>
+                <td><%= link_to "Sell", sell_stock_path(stock.stock_symbol), class: "button is-link is-small" %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

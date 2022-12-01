@@ -1,0 +1,29 @@
+<div class>
+        <%= form_with model: [:admin, @user] do |form| %>
+        <div>
+            <label><%= form.label "Email" %></label>
+            <div>
+                <%= form.text_field :email%>
+            </div>
+        </div>
+        <div>
+            <label><%= form.label "Confirmation" %></label>
+            <div>
+                <%= form.text_field :confirmed_at, :readonly => true %>
+            </div>
+        </div>
+        <div>
+            <label><%= form.label "Approved?" %></label>
+            <div>
+                <%= form.check_box :account_status, {}, "Approved", "Pending"%>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>
+                    <%= form.submit "Submit" %>
+                </p>
+            </div>
+        </div>
+    </div>
+<% end %>

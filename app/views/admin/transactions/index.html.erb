@@ -1,0 +1,22 @@
+<table class = "table is-bordered">
+    <tr>
+        <th>Symbol </th>
+        <th>Company name</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Value</th>
+        <th>Action</th>
+        <th>User</th>
+    </tr>
+    <% @transaction.each do |transaction| %>
+        <tr>
+            <td><%= transaction.stock_symbol %></td>
+            <td><%= transaction.company_name %></td>
+            <td><%= transaction.shares %></td>
+            <td><%= transaction.value %></td>
+            <td><%= transaction.value %></td>
+            <td><%= transaction.action_type %></td>
+            <td><%= User.find(transaction.user_id).email %></td>
+        </tr>
+    <% end %>
+</table>

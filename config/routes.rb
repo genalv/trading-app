@@ -5,6 +5,15 @@ Rails.application.routes.draw do
 
   get "/stocks/search", to: "stocks#search"
 
+  get "/sell_stock/:symbol", to: "stocks#sell_stock", as: "sell_stock"
+  get "/buy_stock/:symbol", to: "stocks#buy_stock", as: "buy_stock"
+
+  namespace :admin do
+    resources :stocks, :transactions, :users
+  end
+
+  get "/admin/pending_users", to: "admin/users#pending_users"
+
   resources :stocks
   resources :transactions
 end
